@@ -22,6 +22,7 @@ defmodule GenstageExample.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:gen_stage, "~> 0.14"},
       {:plug_cowboy, "~> 2.0"}
     ]
   end

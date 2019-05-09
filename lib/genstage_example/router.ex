@@ -1,10 +1,25 @@
 defmodule GenstageExample.Router do
   use Plug.Router
 
-  plug(:match)
-  plug(:dispatch)
+  alias GenstageExample.{Factorial}
 
-  get "/hello" do
-    send_resp(conn, 200, "world")
+  plug :match
+
+  plug Plug.Parsers, parsers: [:urlencoded]
+
+  plug :dispatch
+
+  get "/factorial" do
+    if number = conn.params["number"] do
+      # GenstageExample.BasicProducer.add({Factorial, :find, [String.to_integer(number)]})
+      GenstageExample.QueueProducer.add({Factorial, :find, [String.to_integer(number)]})
+      send_resp(conn, 202, "work added to queue")
+    else
+      send_resp(conn, 422, "must include a number")
+    end
+  end
+
+  match _ do
+    send_resp(conn, 404, "not found")
   end
 end

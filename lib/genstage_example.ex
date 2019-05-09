@@ -1,18 +1,7 @@
 defmodule GenstageExample do
-  @moduledoc """
-  Documentation for GenstageExample.
-  """
+  alias GenstageExample.{BasicProducer}
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> GenstageExample.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  def enqueue({m, f, a}) do
+    BasicProducer.add({m, f, a})
   end
 end
