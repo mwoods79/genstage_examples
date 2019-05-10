@@ -13,11 +13,8 @@ iex -S mix
 ```
 open http://localhost:4001/factorial?number=10
 
-## Using posix commands to send 10 requests to localhost.
-```
-for i in {1..10}; do curl http://localhost:4001/factorial?number=$i; done 
-
-# silent execution
-for i in {1..10}; do curl -s http://localhost:4001/factorial?number=$i; done >/dev/null
-
+## Using posix commands as background jobs to send 10 requests to localhost.
+```bash
+for i in {1..10}; do curl -s http://localhost:4001/factorial?number=$i &>/dev/null & done &>/dev/null &&
+jobs
 ```
