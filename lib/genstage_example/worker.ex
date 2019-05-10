@@ -7,6 +7,6 @@ defmodule GenstageExample.Worker do
 
   def run({m, f, a}) do
     apply(m, f, a)
-    |> IO.inspect(label: "#{inspect(self())} completed")
+    # |> IO.inspect(label: "#{inspect(self())} completed")
   end
 end
