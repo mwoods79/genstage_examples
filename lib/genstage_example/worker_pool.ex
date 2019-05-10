@@ -1,4 +1,4 @@
-defmodule GenstageExample.ConsumerSupervisor do
+defmodule GenstageExample.WorkerPool do
   @moduledoc """
   Very similiar to a worker pool, except that it always spawns new processes
   instead of recycling them.
@@ -20,6 +20,6 @@ defmodule GenstageExample.ConsumerSupervisor do
       worker(GenstageExample.Worker, [], restart: :temporary)
     ]
 
-    {:ok, children, strategy: :one_for_one, subscribe_to: [GenstageExample.QueueProducer]}
+    {:ok, children, strategy: :one_for_one, subscribe_to: [GenstageExample.DatabaseProducer]}
   end
 end

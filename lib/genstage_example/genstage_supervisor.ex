@@ -8,8 +8,11 @@ defmodule GenstageExample.GenstageSupervisor do
   @impl true
   def init(:ok) do
     children = [
-      GenstageExample.QueueProducer,
-      GenstageExample.Consumer
+      # GenstageExample.BasicProducer,
+      # GenstageExample.QueueProducer,
+      GenstageExample.DatabaseProducer,
+      # GenstageExample.Consumer
+      GenstageExample.WorkerPool
     ]
 
     Supervisor.init(children, strategy: :one_for_one)

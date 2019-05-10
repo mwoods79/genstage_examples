@@ -9,6 +9,7 @@ defmodule GenstageExample.Application do
     # List all child processes to be supervised
     children = [
       Plug.Cowboy.child_spec(scheme: :http, plug: GenstageExample.Router, options: [port: 4001]),
+      GenstageExample.Repo,
       GenstageExample.GenstageSupervisor
     ]
 

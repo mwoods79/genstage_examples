@@ -28,3 +28,10 @@ use Mix.Config
 # here (which is why it is important to import them last).
 #
 #     import_config "#{Mix.env()}.exs"
+
+config :genstage_example, ecto_repos: [GenstageExample.Repo]
+
+config :genstage_example, GenstageExample.Repo,
+  database: "genstage_example",
+  hostname: "localhost",
+  port: "5432"

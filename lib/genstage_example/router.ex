@@ -12,7 +12,8 @@ defmodule GenstageExample.Router do
   get "/factorial" do
     if number = conn.params["number"] do
       # GenstageExample.BasicProducer.add({Factorial, :find, [String.to_integer(number)]})
-      GenstageExample.QueueProducer.add({Factorial, :find, [String.to_integer(number)]})
+      # GenstageExample.QueueProducer.add({Factorial, :find, [String.to_integer(number)]})
+      GenstageExample.DatabaseProducer.add({Factorial, :find, [String.to_integer(number)]})
       send_resp(conn, 202, "work added to queue")
     else
       send_resp(conn, 422, "must include a number")
